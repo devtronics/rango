@@ -37,6 +37,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rango_app',
+    'debug_toolbar',
 )
 
 MIDDLEWARE_CLASSES = (
