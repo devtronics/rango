@@ -1,6 +1,7 @@
 from django.conf.urls import *
 from django.contrib import admin
 from rango import views
+from django.conf import settings
 
 urlpatterns = patterns('',
     # Examples:
@@ -11,3 +12,11 @@ urlpatterns = patterns('',
     url(r'^about', 'rango.views.about', name='about'),
     url(r'^contact', 'rango.views.contact', name='contact'),
 )
+
+if settings.DEBUG:
+    urlpatterns += patterns(
+            'django.views.static',
+            (r'^media/(?P<path>, *)',
+            'serve',
+            {'document_root': settings.MEDIA_ROOT}),  )
+
