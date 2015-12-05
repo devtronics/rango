@@ -8,5 +8,5 @@ urlpatterns = patterns('',
     url(r'^rango_app/$', include('rango_app.urls')),
 
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^about/', 'rango.views.about', name='about'),
+    url(r'^about', 'rango.views.about', name='about'),
 )
