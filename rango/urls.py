@@ -9,4 +9,5 @@ urlpatterns = patterns('',
 
     url(r'^admin/', include(admin.site.urls)),
     url(r'^about', 'rango.views.about', name='about'),
+    url(r'^contact', 'rango.views.contact', name='contact'),
 )

@@ -1,5 +1,6 @@
 
 <!DOCTYPE html>
+{% load staticfiles %}
 <html lang="en">
   <head>
     <meta charset="utf-8">
@@ -10,7 +11,7 @@
     <meta name="author" content="">
     <link rel="icon" href="../../favicon.ico">
 
-    <title>Starter Template for Bootstrap</title>
+    <title>Rango</title>
 
     <!-- Bootstrap core CSS -->
     <link href="../../dist/css/bootstrap.min.css" rel="stylesheet">
@@ -49,7 +50,7 @@
           <ul class="nav navbar-nav">
             <li><a class="active"><a href="/rango/">Home</a></li>
             <li><a class="active"><a href="/about/">About</a></li>
-            <li><a href="#contact">Contact</a></li>
+            <li><a class="active"><a href="/contact/">Contact</a></li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>
@@ -58,8 +59,8 @@
     <div class="container">
 
       <div class="starter-template">
-        <h1>Bootstrap starter template</h1>
-        <p class="lead">Use this document as a way to quickly start any new project.<br> All you get is this text and a mostly barebones HTML document.</p>
+        <h1>Rango Homepage</h1>
+        <p class="lead">Welcome to my Rango page!! He sure looks ready to tango!</p>
       </div>
 
     </div><!-- /.container -->
@@ -73,6 +74,7 @@
     <script src="../../dist/js/bootstrap.min.js"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
-  </body>
+    <img src="{% static "images/rango.jpg" %}" alt="Picture of Rango" /> 
+    </body>
 </html>
 
