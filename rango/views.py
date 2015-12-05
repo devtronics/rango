@@ -7,4 +7,5 @@ def home(request):
     return render(request, index_html)
 
 def about(request):
-    return HttpResponse("about rango and about time")
+    about_html = 'about.html'
+    return render(request, about_html)
