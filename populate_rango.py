@@ -4,9 +4,11 @@ os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'rango.settings')
 import django
 django.setup()
 
-from range.models import Category, Page
+from rango_apps.models import Category, Page
 
 def populate():
+    python_cat = add_cat('Python')
+
     add_page(cat=python_cat,
         title="Official Python Tutorial",
         url="http://docs.python.org/2/tutorial/")
@@ -17,7 +19,7 @@ def populate():
 
     add_page(cat=python_cat,
         title="Learn Python in 10 Minutes",
-        url="http://www.korokithakis.net/tutorial/python/")
+        url="http://www.korokithakis.net/tutorials/python/")
 
     django_cat = add_cat("Django")
 
@@ -40,14 +42,20 @@ def populate():
         url="http://flask.pocoo.org")
 
     # Print out what we have added to the user.
-    for c in category.objects.all():
+    for c in Category.objects.all():
         for p in Page.objects.filter(category=c):
             print "- {0} - {1}".format(str(c), str(p))
 
 def add_page(cat, title, url, views=0):
+    p = Page.objects.get_or_create(category=cat, title=title)[0]
+        p.url=url
+        p.views=views
+        p.save()
+    return p
+
+def add_cat(name):
     c = Category.objects.get_or_create(name=name)[0]
     return c
-
 # start execution here!
 if __name__ == '__main__':
     print "Starting Rango population script..."
