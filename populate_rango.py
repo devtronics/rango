@@ -4,7 +4,7 @@ os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'rango.settings')
 import django
 django.setup()
 
-from rango_apps.models import Category, Page
+from rango_app.models import Category, Page
 
 def populate():
     python_cat = add_cat('Python')
@@ -15,7 +15,7 @@ def populate():
 
     add_page(cat=python_cat,
         title="How to Think like a Computer Scientist",
-        url="http://www.greenteapress.com/thinkpython/"
+        url="http://www.greenteapress.com/thinkpython/")
 
     add_page(cat=python_cat,
         title="Learn Python in 10 Minutes",
@@ -29,7 +29,7 @@ def populate():
 
     add_page(cat=django_cat,
         title="How to Tango with Django",
-        url="http://www.tangowithdjango.com/"
+        url="http://www.tangowithdjango.com/")
 
     frame_cat = add_cat("Other Frameworks")
 
@@ -38,7 +38,7 @@ def populate():
         url="http://bottlepy.or/docs/dev/")
 
     add_page(cat=frame_cat,
-        title="Flask"
+        title="Flask",
         url="http://flask.pocoo.org")
 
     # Print out what we have added to the user.
@@ -48,9 +48,9 @@ def populate():
 
 def add_page(cat, title, url, views=0):
     p = Page.objects.get_or_create(category=cat, title=title)[0]
-        p.url=url
-        p.views=views
-        p.save()
+    p.url=url
+    p.views=views
+    p.save()
     return p
 
 def add_cat(name):
