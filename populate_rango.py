@@ -7,7 +7,17 @@ django.setup()
 from rango_app.models import Category, Page
 
 def populate():
-    python_cat = add_cat('Python')
+    # What is happening here?
+
+    # python_cat = add_cat
+    # more than one entry is
+    # name = 'Python'
+    # Every time add_page is executed
+    # a new instance of python_cat is created
+    # every instance of python_cat is initialized with
+    # the same name e.g. non UNIQUE
+
+    python_cat = add_cat('Python', 128, 64)
 
     add_page(cat=python_cat,
         title="Official Python Tutorial",
@@ -21,7 +31,7 @@ def populate():
         title="Learn Python in 10 Minutes",
         url="http://www.korokithakis.net/tutorials/python/")
 
-    django_cat = add_cat("Django")
+    django_cat = add_cat("Django", 64, 28)
 
     add_page(cat=django_cat,
         title="Official Django Tutorial",
@@ -31,7 +41,7 @@ def populate():
         title="How to Tango with Django",
         url="http://www.tangowithdjango.com/")
 
-    frame_cat = add_cat("Other Frameworks")
+    frame_cat = add_cat("Other Frameworks", 32, 16)
 
     add_page(cat=frame_cat,
         title="Bottle",
@@ -53,8 +63,9 @@ def add_page(cat, title, url, views=0):
     p.save()
     return p
 
-def add_cat(name):
-    c = Category.objects.get_or_create(name=name)[0]
+def add_cat(name, views, likes):
+    c = Category.objects.get_or_create(name=name,likes=likes, views=views)[0]
+    c.save()
     return c
 # start execution here!
 if __name__ == '__main__':
