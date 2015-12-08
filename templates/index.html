@@ -61,7 +61,17 @@
       <div class="starter-template">
         <h1>Rango Homepage</h1>
         <p class="lead">Welcome to my Rango page!! He sure looks ready to tango!</p>
-      </div>
+        {% if categories %}
+            <ul>
+                {% for category in categories %}
+                <li>{{ category.name }}</li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <strong>There are no categories present.</strong>
+        {% endif %}
+    
+     </div>
 
     </div><!-- /.container -->
 

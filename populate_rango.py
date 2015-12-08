@@ -7,15 +7,6 @@ django.setup()
 from rango_app.models import Category, Page
 
 def populate():
-    # What is happening here?
-
-    # python_cat = add_cat
-    # more than one entry is
-    # name = 'Python'
-    # Every time add_page is executed
-    # a new instance of python_cat is created
-    # every instance of python_cat is initialized with
-    # the same name e.g. non UNIQUE
 
     python_cat = add_cat('Python', 128, 64)
 
