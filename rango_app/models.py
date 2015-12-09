@@ -5,11 +5,14 @@ class Category(models.Model):
     name = models.CharField(max_length=128, unique=False)
     views = models.IntegerField(default=0)
     likes = models.IntegerField(default=0)
-    slug = models.SlugField(unique=True)
+    # How do you think you might fix this error?
+    # I changed it too false and still.
+    # You must makemigrations after you change it.
+    slug = models.SlugField(unique=False)
 
     def save(self, *args, **kwargs):
         self.slug =  slugify(self.name)
-        super(Catergory, self).save(*args, **kwargs)
+        super(Category, self).save(*args, **kwargs)
 
     def __unicode__(self):
         return self.name
