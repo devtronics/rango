@@ -1,6 +1,9 @@
-from django.conf.urls import patterns, include, url
-from rango_app.views import BootstrapView
-
+from rango_app import views
+from rango import views
+from django.conf import settings
+from django.conf.urls.static import static
+from django.contrib import admin
+from django.conf.urls import patterns, url
 
 urlpatterns = patterns('',
     # Examples:
