@@ -11,4 +11,7 @@ urlpatterns = patterns('',
     url(r'^bootstrap/',
         BootstrapView.as_view(),
         name='bootstrap_view'),
+
+
+
 )

@@ -19,7 +19,8 @@ def category(request, category_name_slug):
     context_dict = {}
 
     try:
-        """ Can we find a category name slug with the given name?  If we can't, the .get() method raises a DoesNotExist exception. So the .get () method returns one model instance or raises an exception. """
+        """ Can we find a category name slug with the given name?  If we can't, the .get() method raises a DoesNotExist exception.
+        So the .get () method returns one model instance or raises an exception. """
         category = Category.objects.get(slug=category_name_slug)
         context_dict['category_name'] = category.name
 
@@ -36,6 +37,6 @@ def category(request, category_name_slug):
         # We get here if we didnt find the specified category
         #  Dont do anython - the template displays the "no category" message for us
         pass
-# Go render the response and return it to the client.
+        # Go render the response and return it to the client.
     return render(request, 'rango/category.html', context_dict)
 
