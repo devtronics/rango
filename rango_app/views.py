@@ -38,5 +38,5 @@ def category(request, category_name_slug):
         #  Dont do anython - the template displays the "no category" message for us
         pass
         # Go render the response and return it to the client.
-    return render(request, 'rango/category.html', context_dict)
+    return render(request, 'rango_app.category.html', context_dict)
 

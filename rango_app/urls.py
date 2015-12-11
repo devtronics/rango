@@ -12,6 +12,10 @@ urlpatterns = patterns('',
         BootstrapView.as_view(),
         name='bootstrap_view'),
 
+    url(r'^category/(?P<category_name_slug>[\w\-]+)/$',
+        'rango_app.views.category',
+        name='category'),
+
 
 
 )

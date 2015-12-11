@@ -10,7 +10,7 @@ urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
     url(r'^about/', views.about, name='about'),
     url(r'^contact/', views.contact, name='contact'),
-    url(r'^category/(?P<category_name_slug>[\w\-]+)/$', 'rango_app.views.category', name='category'),) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    ) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 if not settings.DEBUG:
         urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT),
