@@ -1,9 +1,13 @@
+{% extends 'base.html' %}
 {% load staticfiles %}
+
+{% block content %}
 
 <h1> Created by heckles </h1>
 <h2> heckles83@gmail.com </h2>
 <br> </br>
 <a href="/">Home</a>
 <br></br>
-<img src="{% static "images/snake.jpg" %}" alt="Picture of rango" />
+<img src="{% static 'images/snake.jpg' %}" alt="Picture of rango" />
+{% endblock %}
 

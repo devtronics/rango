@@ -37,6 +37,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rango_app',
+    'bootstrap_app',
     'debug_toolbar',
 )
 
@@ -50,7 +51,7 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
-ROOT_URLCONF = 'rango_app.urls'
+ROOT_URLCONF = 'rango.urls'
 
 WSGI_APPLICATION = 'rango.wsgi.application'
 
@@ -91,7 +92,8 @@ STATICFILES_DIRS = (
 
 TEMPLATE_DIRS = [
     os.path.join(BASE_DIR, 'templates'),
-    os.path.join(BASE_DIR, 'rango_app','templates'),]
+    os.path.join(BASE_DIR, 'rango_app','templates'),
+    os.path.join(BASE_DIR, 'bootstrap_app','templates'),]
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media') #Absolute path to the media directory

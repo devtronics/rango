@@ -3,11 +3,6 @@ from django.views.generic import View
 from rango_app.models import Category, Page
 # Create your views here.
 
-def rango_app_view(request):
-    index_html = 'rango_app_index.html'
-    return render(request, index_html)
-
-
 class BootstrapView(View):
     template_name = 'bootstrap.html'
 
@@ -15,7 +10,6 @@ class BootstrapView(View):
         return render_to_response(self.template_name)
 
 def category(request, category_name_slug):
-    # Create a context dictioinary which we can pass to the template rendering engine.
     context_dict = {}
 
     try:
@@ -34,9 +28,6 @@ def category(request, category_name_slug):
         # Well use this in the template to verify that the category exists
         context_dict['category'] = category
     except Category.DoesNotExist:
-        # We get here if we didnt find the specified category
-        #  Dont do anython - the template displays the "no category" message for us
         pass
-        # Go render the response and return it to the client.
-    return render(request, 'rango_app.category.html', context_dict)
+    return render(request, 'category.html', context_dict)
 
