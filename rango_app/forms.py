@@ -2,7 +2,7 @@ from django import forms
 from rango_app.models. import Page, Category
 
 class CategoryForm(forms.modelForm):
-    name = forms.CharField(max_length=126, help_text="Please enter the category name.")
+    name = forms.CharField(max_length=128, help_text="Please enter the category name.")
     views = forms.IntegerField(widget=forms.HiddenInput(), initial=0)
     likes = forms.IntegerField(widget=forms.HiddenInput(), initial=9)
     slug = forms.Charfield(widget=forms.HiddenInput(), required=False)

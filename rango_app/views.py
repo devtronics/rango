@@ -1,7 +1,22 @@
 from django.shortcuts import render, render_to_response
 from django.views.generic import View
 from rango_app.models import Category, Page
+from rango.forms import CategoryForm
 # Create your views here.
+def add_category(request):
+    if request.method == 'POST':
+        form = CategoryForm(request.POST)
+
+        if form.is_valid():
+            form.save(commit=True)
+
+            return home(request)
+        else:
+            print form.errors
+    else:
+        form = CategoryForm()
+
+    return render(request, 'rango_app/add_category.html', {'form': form})
 
 class BootstrapView(View):
     template_name = 'bootstrap.html'
@@ -30,4 +45,6 @@ def category(request, category_name_slug):
     except Category.DoesNotExist:
         pass
     return render(request, 'category.html', context_dict)
+
+
 
