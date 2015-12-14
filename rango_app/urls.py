@@ -13,4 +13,7 @@ urlpatterns = patterns('',
         category,
         name='category'),
 
+    url(r'^add_category/$', views.add_category, name='add_category'),
+
+
 )
