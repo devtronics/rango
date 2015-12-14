@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+        {% extends 'base.html' %}
 {% load staticfiles %}
 
 {% block content %}
@@ -11,10 +11,15 @@
                 {% for category in categories %}
                 <li><a href="/rango_app/category/{{ category.slug }}">{{ category.name }}</a></li>
                 {% endfor %}
-            </ul>
         {% else %}
             <strong>There are no categories present.</strong>
         {% endif %}
     <img src="{% static 'images/rango.jpg' %}" alt="Picture of Rango" /> 
+          <h4> Number of views </h4>
+                {% for category in categories %}
+                <li> {{ category.slug }} {{ category.views }} </li>
+                {% endfor %}
+            </ul>
      </div>
+
 {% endblock %}

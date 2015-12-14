@@ -5,9 +5,6 @@ class Category(models.Model):
     name = models.CharField(max_length=128, unique=False)
     views = models.IntegerField(default=0)
     likes = models.IntegerField(default=0)
-    # How do you think you might fix this error?
-    # I changed it too false and still.
-    # You must makemigrations after you change it.
     slug = models.SlugField(unique=False)
 
     def save(self, *args, **kwargs):
