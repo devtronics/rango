@@ -17,5 +17,7 @@ urlpatterns = patterns('',
        'rango_app.views.add_category',
         name='add_category'),
 
-
+    url(r'^add_page/$',
+        'rango_app.views.add_page',
+        name='add_page'),
 )
