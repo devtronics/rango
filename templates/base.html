@@ -2,6 +2,11 @@
 
     <html>
     <head>
+<!-- All templates that extend base.html get all of this css and <html> and <head> because they extend it...thats the point.-->
+
+    <title> 
+    {% block title %} Main page title!!! {% endblock %}
+    </title>
     <link href="{% static 'css/bootstrap/bootstrap.min.css' %}"
           rel="stylesheet" media="screen">
     <link href="{% static 'css/bootstrap/custom.css' %}"
@@ -33,9 +38,11 @@
       <div class="container"> 
 
         {% block content %}
+        <!-- Any thing inside of block content tags in any template gets put here.-->
         {% endblock %}
 
       </div>
+
         <script src="{% static 'js/bootstrap/bootstrap.min.js' %}"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
         <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>

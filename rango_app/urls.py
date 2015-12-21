@@ -2,7 +2,7 @@ from django.conf.urls import *
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
-from rango_app.views import category
+from rango_app import views
 
 
 urlpatterns = patterns('',
@@ -10,14 +10,14 @@ urlpatterns = patterns('',
 #    url(r'^category/(?P<category_name_slug>\w+)/$',
 #        views.category, name='category'),
     url(r'^category/(?P<category_name_slug>[\w\-]+)/$',
-       'rango_app.views.category',
+        views.category,
         name='category'),
 
     url(r'^add_category/$',
-       'rango_app.views.add_category',
+        views.add_category,
         name='add_category'),
 
-    url(r'^add_page/$',
-        'rango_app.views.add_page',
+    url(r'^category/(?P<category_name_slug>[\w\-]+)/add_page/$',
+        views.add_page,
         name='add_page'),
 )
