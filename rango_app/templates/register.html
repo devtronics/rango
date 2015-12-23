@@ -5,12 +5,15 @@
     <h1>Register with Rango</h1>
     
     {% if registered %}
+    Rango says: <strong>thank you for registering!</strong>
+    <a href="/">Return to homepage.</a><br />
+    {% else %}
     Rango says: <strong>register here!!</strong><br />
     
    <form id="user_form" method="post" action="/rango_app/register/"
         enctype="multipart/form-data">
         
-        {% csrf_token%} 
+        {% csrf_token %} 
         {{ user_form.as_p }}
         {{ profile_form.as_p }}
 

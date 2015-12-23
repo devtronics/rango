@@ -45,7 +45,7 @@ def register(request):
         profile_form = UserProfileForm()
 
     return render(request,
-            'rango/register.html',
+            'register.html',
             {'user_form': user_form, 'profile_form': profile_form, 'registered': registered} )
 
 def get_category_list(max_results=0, starts_with=''):

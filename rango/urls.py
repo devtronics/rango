@@ -5,12 +5,23 @@ from django.conf.urls.static import static
 from rango import views
 
 urlpatterns = patterns('',
-    url(r'^$', views.home, name='home'),
-    url(r'^rango_app/', include('rango_app.urls'), name='rango_app'),
-    url(r'^bsa/', include('bootstrap_app.urls'), name='bootstrap_app'),
-    url(r'^admin/', include(admin.site.urls)),
-    url(r'^about/', views.about, name='about'),
-    url(r'^contact/', views.contact, name='contact'),
+    url(r'^$',
+        views.home,
+        name='home'),
+    url(r'^rango_app/',
+        include('rango_app.urls'),
+        name='rango_app'),
+    url(r'^bsa/',
+        include('bootstrap_app.urls'),
+        name='bootstrap_app'),
+    url(r'^admin/',
+        include(admin.site.urls)),
+    url(r'^about/',
+        views.about,
+        name='about'),
+    url(r'^contact/',
+        views.contact,
+        name='contact'),
     ) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 if not settings.DEBUG:
