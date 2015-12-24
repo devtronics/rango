@@ -56,6 +56,7 @@ PASSWORD_HASHERS = (
 'django.contrib.auth.hashers.PBKDF2SHA1PasswordHasher',
 )
 
+LOGIN_URL = '/rango_app/login/'
 
 ROOT_URLCONF = 'rango.urls'
 

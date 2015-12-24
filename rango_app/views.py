@@ -6,14 +6,24 @@ from rango.views import *
 from rango_app.forms import PageForm
 from rango_app.forms import UserForm, UserProfileForm
 from django.template import RequestContext
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponseRedirect, HttpResponse
+from django.contrib.auth.decorators import login_required
 
 def encode_url(str):
     return str.replace(' ', '_')
 
 def decode_url(str):
     return str.replace('_', ' ')
+
+@login_required
+def user_logout(request):
+    logout(request)
+    return HttpResponseRedirect('/')
+
+@login_required
+def restricted(request):
+    return HttpResponse("Since you're logged in, you can see this text!")
 
 def user_login(request):
     if request.method == 'POST':
