@@ -4,7 +4,11 @@
 {% block content %}
 
       <div class="starter-template">
-        <h1>Rango Homepage</h1>
+        {% if user.is_authenticated %}
+        <h1>Rango says... hello {{ user.username }}!</h1>
+        {% else %}
+        <h1>Rango says... hello to the unlogged in masses!!</h1>
+        {% endif %}
         <p class="lead">Welcome to my Rango page!! He sure looks ready to tango!</p>
         {% if categories %}
             <ul>
@@ -16,7 +20,8 @@
         {% endif %}
     
    <h2> <a href="/rango_app/add_category/">Add a New Category</a><br /></h2>
-   <h3> <a href="/rango_app/register/">Register Here</a><br /><h3>
+   <h3> <a href="/rango_app/register/">Register Here</a><br /></h3>
+   <h4> <a href="/rango_app/user_login/">Login</a><br /></h4>     
     <img src="{% static 'images/rango.jpg' %}" alt="Picture of Rango" /> 
           <h4> Number of views </h4>
                 {% for category in categories %}

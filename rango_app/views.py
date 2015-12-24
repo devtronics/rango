@@ -6,7 +6,8 @@ from rango.views import *
 from rango_app.forms import PageForm
 from rango_app.forms import UserForm, UserProfileForm
 from django.template import RequestContext
-
+from django.contrib.auth import authenticate, login
+from django.http import HttpResponseRedirect, HttpResponse
 
 def encode_url(str):
     return str.replace(' ', '_')
@@ -18,7 +19,7 @@ def user_login(request):
     if request.method == 'POST':
         username = request.POST.get('username')
         password = request.POST.get('password')
-        user = authenicate(username=username, password=password)
+        user = authenticate(username=username, password=password)
 
         if user:
             if user.is_active:
@@ -30,7 +31,7 @@ def user_login(request):
             print "Invalid login details: {0}, {1}".format(username, password)
             return HttpResponse("Invalid login details supplied.")
     else:
-        return render(request, "rango_app/login.html", {})
+        return render(request, "user_login.html", {})
 
 def register(request):
 
