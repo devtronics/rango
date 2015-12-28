@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from rango_app.models import Category
+from datetime import datetime
 # Create your views here.
 
 
@@ -19,7 +20,7 @@ def home(request):
     visits = int(request.COOKIES.get('visits', '1'))
 
     reset_last_visit_time = False
-    response = render(request, 'rango_app/index.html', context_dict)
+    response = render(request, 'index.html', context_dict)
 
     if 'last_visit' in request.COOKIES:
         last_visit = request.COOKIES['last_visit']
@@ -34,7 +35,7 @@ def home(request):
 
         context_dict['visits'] = visits
 
-        response = render(request, 'rango_app/index.html', context_dict)
+        response = render(request, 'index.html', context_dict)
 
     if reset_last_visit_time:
         response.set_cookie('last_visit', datetime.now())

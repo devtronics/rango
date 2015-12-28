@@ -22,7 +22,7 @@
    
     {% if user.is_authenticated %} 
     <a href="{% url 'restricted' %}">Restricted Page</a><br />
-    <a href="{% url 'logout' %}">Logout</a><br />
+    <h2> <a href="{% url 'logout' %}">Logout</a><br /></h2>
     {% else %} 
     <h2> <a href="{% url 'user_login' %}">Login</a><br /></h2>     
     <h3> <a href="{% url 'register' %}">Register Here</a><br /></h3>
