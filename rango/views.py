@@ -1,8 +1,14 @@
 from django.shortcuts import render
-from rango_app.models import Category
+from rango_app.models import Category, Page
 from datetime import datetime
-# Create your views here.
+from rango_app.views import *
 
+# Create your views here.
+def encode_url(str):
+    return str.replace(' ', '_')
+
+def decode_url(str):
+    return str.replace('_', ' ')
 
 def about(request):
     about_html = 'about.html'
@@ -13,34 +19,34 @@ def contact(request):
     return render(request, contact_html)
 
 def home(request):
-    index_html = 'index.html'
+    context = RequestContext(request)
+
     category_list = Category.objects.order_by('-likes')[:5]
+
+    for category in category_list:
+        category.url = encode_url(category.name)
+
+    context_dict = {'categories': category_list}
+
+    cat_list = get_category_list()
+
     page_list = Page.objects.order_by('-views')[:5]
+    context_dict['pages'] = page_list
 
-    context_dict = {'categories': category_list, 'pages': page_list}
 
-    visits = request.session.get('visits')
-    if not visits:
-        visits = 1
-    reset_last_visit_time = False
+    if request.session.get('last_visit'):
 
-    last_visit = request.session.get('last_visit')
-    if 'last_visit':
-        last_visit_time = datetime.strptime(last_visit[:-7], "%Y-%m-%d %H:%M:%S")
+        last_visit_time = request.session.get('last_visit')
 
-        if (datetime.now() - last_visit_time).days > 0:
+        visits = request.session.get('visits', 0)
+
+        if (datetime.now() - datetime.strptime(last_visit_time[:-7], "%Y-%m-%d %H:%M:%S")).days > 0:
             visits = visits + 1
-            reset_last_visit_time = True
 
     else:
-        reset_last_visit_time = True
 
-    if reset_last_visit_time:
         request.session['last_visit'] = str(datetime.now())
-        request.session['visits'] = visits
+        request.session['visits'] = 1
 
-    context_dict['visits'] = visits
 
-    response = render(request, 'index.html', context_dict)
-
-    return response
+    return render_to_response('index.html', context_dict, context)
