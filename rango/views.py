@@ -40,9 +40,10 @@ def home(request):
 
         visits = request.session.get('visits', 0)
 
-        if (datetime.now() - datetime.strptime(last_visit_time[:-7], "%Y-%m-%d %H:%M:%S")).days > 0:
+        if (datetime.now() -
+            datetime.strptime(last_visit_time[:-7],
+                              "%Y-%m-%d %H:%M:%S")).days > 0:
             visits = visits + 1
-
     else:
 
         request.session['last_visit'] = str(datetime.now())
