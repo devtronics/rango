@@ -8,15 +8,14 @@
 
 {% block content %}
 
-<div class="page-header">
 
 {% if user.is_authenticated %}
+    <div class="page-header">
+        <h1>Rango says... hello {{ user.username }}!</h1>
 
-   <h1>Rango says... hello {{ user.username }}!</h1>
+    {% else %}
 
-{% else %}
-
-  <h1>Rango says... hello to the unlogged in masses!!</h1>
+        <h1>Rango says... hello to the unlogged in masses!!</h1>
 
 {% endif %}
 
