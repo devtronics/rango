@@ -2,8 +2,7 @@
 
     <html>
     <head>
-    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">(...)
-    </head>
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
 <!-- All templates that extend base.html get all of this css and <html> and <head> because they extend it...thats the point.-->
 
     <title> 
@@ -30,15 +29,15 @@
             </div>
         <div id="navbar" class="collapse navbar-collapse">
               <ul class="nav navbar-nav">
-                <li><a href="/">Home</a></li>
-                <li><a href="/about/">About</a></li>
-                <li><a href="/contact/">Contact</a></li>
+                <li><a href="/"><span class="glyphicon glyphicon-home"></span>Home</a></li>
+                <li><a href="/about/"><span class="glyphicon glyphicon-flag"></span>About</a></li>
+                <li><a href="/contact/"><span class="glyphicon glyphicon-link"></span>Contact</a></li>
               </ul>
               <ul id="navbar" class="nav navbar-nav navbar-right">
                 {% if user.is_authenticated %}
                 <li class="nav navbar-nav text">Welcome, {{ user.username }}!</li>
-                <li><a href="/rango_app/profile/">Profile</li>
-                <li><a href="/rango_app/logout">Logout</li>
+                <li><a href="/rango_app/profile/"><span class="glyphicon glyphicon-eye-open"></span>Profile</a></li>
+                <li><a href="/rango_app/logout"><span class="glyphicon glyphicon-log-out"></span>Logout</a></li>
                     {% else %}
 
                 <li><a href="/rango_app/register/"><span class="glyphicon glyphicon-user"></span> Register</a></li>
