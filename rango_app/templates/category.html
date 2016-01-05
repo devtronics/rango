@@ -1,61 +1,22 @@
 {% extends 'base.html' %}
 
-{% block content %}
-  <div class="hero-unit">
-    <h1>{{ category_name }}</h1>
+{% load bootstrap_toolkit %}
 
-      {% if category %}
+{% block title %}Add-Category{% endblock %}
+
+{% block content %}
+
+    <form id="category_form"method="post"action="{% url 'add_category' %}>
+        <h2 class="form-signin-heading">Add a Category</a></h2>
+
+        {% csrf_token %}
+
+        {{ form|as_bootstrap }}
 
         <br/>
 
-        <div id="pages">
-          {% if pages %}
-            <ul>
-              {% for page in pages %}
-              <li>
-                <a href="{{ page.url }}">{{ page.title }}</a>
-              </li>
-              {% endfor %}
-            </ul>
-          {% else %}
-            <strong>No pages currently in category {{category_name }}.</strong><br/>
-          {% endif %}
-        </div>
-        <a href="/rango_app/category/{{ category_name_slug }}/add_page/">Add a Page</a>
- </div>
+        <button class="btn btn-primary" type="submit" name="submit">Create Category</button>
 
-<div class="hero-unit">
-    <div class="container-fluid">
-        <p>Search for a page.</p>
-        <form class="span8 form-search" id="search_form" method="post" action="/rango_app/category/{{ category_name_slug }}/">
-            {% csrf_token %}
-            <input type="text" class="input-long search-query"  name="query" value="{{ category_name }}" id="query" />
-            <button type="submit" class="btn btn-success" name="submit" value="Search">Search</button>
-        </form>
-    </div>
-    
-    <div class="container-fluid">
-        {% if result_list %}
-            <!-- Display search results in an ordered list -->
-            <ol>
-                {% for result in result_list %}
-                <li>
-            <button data-catid="{{category.id}}" data-title="{{ result.title }}" data-url="{{ result.link }}" class="rango-add btn btn-mini btn-info" type="button">Add</button>
-                    <strong><a href="{{ result.link }}">{{ result.title }}</a></strong><br />
-                    <p>{{ result.summary }}</p>
-                </li>
-                {% endfor %}
-            </ol>
-        {% else %}
-            <br/>
-            <p>No results found</p>
-        {% endif %}
-    </div>
-{% else %}
-    The specified category {{ category_name_slug }} does not exist!</div>
-{% endif %}
-
-</div>
-
+    </form>
 
 {% endblock %}
